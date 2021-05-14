@@ -68,5 +68,14 @@ public class TextServiceControllerTest {
         this.mvc.perform(request).andExpect(status().isOk())
                 .andExpect(content().string("a lot of this and a lot of that"));
     }
+    @Test
+    public void testEncode() throws  Exception{
+        String message = "a little of this and a little of that";
+        String key="mcxrstunopqabyzdefghijklvw";
 
+        RequestBuilder request = post("/encode").param("message",message)
+                .param("key",key);
+        this.mvc.perform(request).andExpect(status().isOk())
+                .andExpect(content().string("m aohhas zt hnog myr m aohhas zt hnmh"));
+    }
 }
